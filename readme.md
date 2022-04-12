@@ -1,15 +1,12 @@
 ## Nova Items Field
 
-[![Latest Version on Github](https://img.shields.io/github/release/dillingham/nova-items-field.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-items-field)
-[![Total Downloads](https://img.shields.io/packagist/dt/dillingham/nova-items-field.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-items-field) [![Twitter Follow](https://img.shields.io/twitter/follow/im_brian_d?color=%231da1f1&label=Twitter&logo=%231da1f1&logoColor=%231da1f1&style=flat-square)](https://twitter.com/im_brian_d)
-
-Laravel Nova array items field with sorting, validation & many [display options](https://github.com/dillingham/nova-items-field#additional-options)
+Laravel Nova array items field with sorting, validation & many [display options](#additional-options)
 
 ![nova-array-input-field](https://user-images.githubusercontent.com/29180903/51337942-7d1be300-1a56-11e9-84fa-66f5b285c279.png)
 
 ### Installation
 ```
-composer require dillingham/nova-items-field
+composer require blendbyte/nova-items-field
 ```
 
 ### Usage
@@ -30,7 +27,9 @@ public $casts = [
     'emails' => 'array'
 ];
 ```
+
 ### Validation
+
 Use Laravel's built in [array validation](https://laravel.com/docs/5.7/validation#validating-arrays)
 ```php
 Items::make('Emails')->rules([
@@ -43,6 +42,7 @@ Items::make('Long Text', 'attribute')->rules([
     'attribute.*' => 'email|min:10',
 ]),
 ```
+
 ### Array processing
 
 Use the array to perform other actions by making an [observer](https://nova.laravel.com/docs/1.0/resources/#resource-events)
@@ -61,8 +61,6 @@ function saving($user)
 
 Here's a brief walkthrough to customize the vue item - [view](https://github.com/dillingham/nova-items-field/issues/10#issuecomment-527315057)
 
-
-
 ### Additional options 
 
 | function | description | default |
@@ -77,14 +75,3 @@ Here's a brief walkthrough to customize the vue item - [view](https://github.com
 | `->deleteButtonValue($value)` | value for delete button | "x" |
 | `->createButtonValue($value)` | value for create button | "Add" |
 | `->hideCreateButton()` | hide the "add" button | false |
-
-
----
-
-# Author
-
-Hi 👋, Im Brian Dillingham, creator of this Nova package [and others](https://novapackages.com/collaborators/dillingham)
-
-Hope you find it useful. Feel free to reach out with feedback.
-
-Follow me on twitter: [@im_brian_d](https://twitter.com/im_brian_d) 

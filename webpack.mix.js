@@ -7,4 +7,4 @@ mix
     .setPublicPath('dist')
     .js('resources/js/field.js', 'js')
     .vue({ version: 3 })
-    .nova('dillingham/nova-items-field')
+    .nova('blendbyte/nova-items-field')

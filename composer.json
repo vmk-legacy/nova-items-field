@@ -1,5 +1,5 @@
 {
-    "name": "dillingham/nova-items-field",
+    "name": "blendbyte/nova-items-field",
     "description": "Nova field to handle array columns",
     "keywords": [
         "laravel",
