@@ -23,7 +23,7 @@
                     <template #item="{ element, index }">
                         <li class="py-1">
                             <div class="nova-items-field-input-wrapper-item flex py-1 gap-2">
-                                <button type="button" class="cursor-move sortable-handle px-4"><Icon type="view-list" /></button>
+                                <button type="button" class="cursor-move sortable-handle px-4"><Icon type="menu" /></button>
                                 <input
                                     :value="element"
                                     :type="currentField.inputType"
@@ -34,11 +34,15 @@
                                     class="flex-1 form-control form-input form-input-bordered"
                                 >
                                 <button
+                                    v-if="currentField.deleteButtonValue"
                                     type="button"
                                     @click="removeItem(index)"
                                     class="px-4 text-xl font-bold focus:outline-none focus:ring"
                                     v-html="currentField.deleteButtonValue"
                                 />
+                                <button v-else type="button" @click="removeItem(index)" class="px-1 ml-1 toolbar-button">
+                                  <Icon type="x"/>
+                                </button>
                             </div>
                             <HelpText class="mt-2 help-text-error" v-if="hasErrors(currentField.attribute + '.' + index)">
                               {{ arrayErrors[currentField.attribute + '.' + index][0] }}

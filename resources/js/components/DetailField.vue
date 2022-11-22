@@ -4,6 +4,11 @@
 
 <script>
 export default {
-    props: ['resource', 'resourceName', 'resourceId', 'field']
+    props: ['resource', 'resourceName', 'resourceId', 'field'],
+    created() {
+      if (Array.isArray(this.field.value)) {
+          this.field.value = this.field.value.join(", ");
+      }
+    },
 }
 </script>

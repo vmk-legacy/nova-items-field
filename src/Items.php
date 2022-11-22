@@ -3,9 +3,12 @@
 namespace NovaItemsField;
 
 use Laravel\Nova\Fields\Field;
+use Laravel\Nova\Fields\SupportsDependentFields;
 
 class Items extends Field
 {
+    use SupportsDependentFields;
+
     public $items = [];
     public $component = 'nova-items-field';
     public $placeholder = "Add a new item";
@@ -16,7 +19,7 @@ class Items extends Field
     public $draggable = false;
     public $hideCreateButton = false;
     public $createButtonValue = "Add";
-    public $deleteButtonValue = "x";
+    public $deleteButtonValue;
     public $listFirst = false;
     public $detailItemComponent = 'detail-nova-items-field-item';
 
