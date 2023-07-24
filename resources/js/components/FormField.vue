@@ -19,7 +19,7 @@
                 />
             </div>
             <ul ref="novaitemslist" :style="maxHeight" v-if="items.length" class="nova-items-field-input-items list-reset">
-                <draggable :disabled="currentField.draggable === false" v-model="items" :item-key="currentField.attribute + '.' + index" :options="{ disabled: currentField.draggable === false, handle: '.sortable-handle' }">
+                <draggable :disabled="currentField.draggable === false" v-model="items" :item-key="currentField.attribute + '.' + index" handle=".sortable-handle">
                     <template #item="{ element, index }">
                         <li class="py-1">
                             <div class="nova-items-field-input-wrapper-item flex py-1 gap-2">
