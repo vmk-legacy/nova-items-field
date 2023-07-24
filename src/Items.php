@@ -23,6 +23,26 @@ class Items extends Field
     public $listFirst = false;
     public $detailItemComponent = 'detail-nova-items-field-item';
 
+    public function __construct($name, $attribute = null, callable $resolveCallback = null)
+    {
+        parent::__construct($name, $attribute, $resolveCallback);
+
+        $this->withMeta([
+            'max' => $this->max,
+            'items' => $this->items,
+            'listFirst' => $this->listFirst,
+            'inputType' => $this->inputType,
+            'draggable' => $this->draggable,
+            'fullWidth' => $this->fullWidth,
+            'maxHeight' => $this->maxHeight,
+            'placeholder' => $this->placeholder,
+            'hideCreateButton' => $this->hideCreateButton,
+            'createButtonValue' => $this->createButtonValue,
+            'deleteButtonValue' => $this->deleteButtonValue,
+            'detailItemComponent' => $this->detailItemComponent,
+        ]);
+    }
+
     public function resolve($resource, $attribute = null)
     {
         parent::resolve($resource, $attribute);
