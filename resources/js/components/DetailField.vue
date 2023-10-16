@@ -4,6 +4,7 @@
       <span v-if="shouldDisplayAsList">
         <ul class="nova-items-field-list">
           <li v-for="(value,index) in fieldValue" :key="index">{{value}}</li>
+          <li v-if="shouldDisplayEllipsis && fieldValueTruncated" class="nova-item-field-ellipis">...</li>
         </ul>
       </span>
       <span v-else-if="shouldDisplayAsTotal" class="nova-items-field-total">

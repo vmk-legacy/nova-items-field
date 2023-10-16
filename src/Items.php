@@ -47,6 +47,7 @@ class Items extends Field
             'deleteButtonValue' => $this->deleteButtonValue,
             'detailItemComponent' => $this->detailItemComponent,
             'maxItems' => 10,
+            'withEllipsis' => true,
         ]);
     }
 
@@ -200,6 +201,11 @@ class Items extends Field
 
     public function maxItems(int $value) {
        $this->withMeta(['maxItems' => $value]);
+       return $this;
+    }
+
+    public function hideEllipsis() {
+       $this->withMeta(['withEllipsis' => false]);
        return $this;
     }
 }
