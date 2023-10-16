@@ -1,18 +1,23 @@
 export default {
-    computed: {
-        fieldValue() {
-            let fieldValue = this.field.value;
-            while (typeof fieldValue === 'string') {
-                try {
-                    fieldValue = JSON.parse(fieldValue);
-                } catch {
-                    fieldValue = null;
-                }
-            }
-            if (! fieldValue) {
-                fieldValue = [];
-            }
-            return fieldValue;
-        }
+  computed: {
+    shouldDisplayAsList() {
+      return this.field.asList
+    },
+
+    shouldDisplayAsTotal() {
+      return this.field.asTotal
+    },
+
+    fieldValue() {
+      if (!this.usesCustomizedDisplay && !this.fieldHasValue) {
+        return null
+      }
+
+      if (this.field.displayedAs) {
+        return String(this.field.displayedAs)
+      } else {
+        return this.field.value
+      }
     }
+  }
 };
