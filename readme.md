@@ -85,4 +85,4 @@ Here's a brief walkthrough to customize the vue item - [view](https://github.com
 | `->asList()` | display items as list on index and detail view | false |
 | `->asTotal()` | display total of items on index and detail view | false |
 | `->maxItems()` | display maximum of x items on index and detail view | 10 |
-
+| `->hideEllipsis()` | hide ellipsis symbol (...) on list display | false |
