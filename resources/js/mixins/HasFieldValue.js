@@ -8,6 +8,11 @@ export default {
       return this.field.asTotal
     },
 
+    fieldHasValue() {
+        let fieldValue = this.field.value;
+        return fieldValue && Array.isArray(fieldValue) && fieldValue.length;
+    },
+
     fieldValue() {
       if (!this.usesCustomizedDisplay && !this.fieldHasValue) {
         return null
@@ -16,7 +21,7 @@ export default {
       if (this.field.displayedAs) {
         return String(this.field.displayedAs)
       } else {
-        return this.field.value
+        return this.field.value.slice(0,this.maxItems);
       }
     }
   }
