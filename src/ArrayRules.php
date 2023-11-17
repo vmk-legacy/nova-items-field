@@ -27,7 +27,7 @@ class ArrayRules implements Rule
      */
     protected function getValidationAttribute($attribute)
     {
-        return str_replace('.', '->', $attribute);
+        return str_replace('.', '=>', $attribute);
     }
 
     /**
@@ -42,7 +42,7 @@ class ArrayRules implements Rule
         return preg_replace(
             '/'.$validationAttribute.'\.?/',
             '',
-            str_replace('->', '.', $errorAttribute)
+            str_replace('=>', '.', $errorAttribute)
         );
     }
 
