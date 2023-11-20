@@ -4,9 +4,15 @@ namespace NovaItemsField;
 
 use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\SupportsDependentFields;
+use Laravel\Nova\Fields\AsHTML;
+use Laravel\Nova\Fields\Copyable;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Items extends Field
 {
+    use AsHTML;
+    use Copyable;
+
     use SupportsDependentFields;
 
     public $items = [];
@@ -40,6 +46,8 @@ class Items extends Field
             'createButtonValue' => $this->createButtonValue,
             'deleteButtonValue' => $this->deleteButtonValue,
             'detailItemComponent' => $this->detailItemComponent,
+            'maxItems' => 10,
+            'withEllipsis' => true,
         ]);
     }
 
@@ -164,5 +172,40 @@ class Items extends Field
         $this->detailItemComponent = $detailItemComponent;
 
         return $this;
+    }
+
+    /**
+     * Prepare the element for JSON serialization.
+     *
+     * @return array<string, mixed>
+     */
+    public function jsonSerialize(): array
+    {
+        $request = app(NovaRequest::class);
+
+        return array_merge(parent::jsonSerialize(), [
+            'asHtml' => $this->asHtml,
+            'copyable' => $this->copyable,
+        ]);
+    }
+
+    public function asList() {
+        $this->withMeta(['asList' => true]);
+        return $this;
+    }
+
+    public function asTotal() {
+       $this->withMeta(['asTotal' => true]);
+       return $this;
+    }
+
+    public function maxItems(int $value) {
+       $this->withMeta(['maxItems' => $value]);
+       return $this;
+    }
+
+    public function hideEllipsis() {
+       $this->withMeta(['withEllipsis' => false]);
+       return $this;
     }
 }

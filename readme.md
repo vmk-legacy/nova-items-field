@@ -17,7 +17,7 @@ use NovaItemsField\Items;
 ```php
 function fields() {
     return [
-        Items::make('Emails'),
+        Items::make('Emails')
     ]
 }
 ```
@@ -27,6 +27,9 @@ public $casts = [
     'emails' => 'array'
 ];
 ```
+
+In the latest release, default items will be displayed as "raw" on index and detail
+You can use asList, asTotal or displayUsing methods to format list
 
 ### Validation
 
@@ -79,3 +82,7 @@ Here's a brief walkthrough to customize the vue item - [view](https://github.com
 | `->deleteButtonValue($value)` | value for delete button | "x" |
 | `->createButtonValue($value)` | value for create button | "Add" |
 | `->hideCreateButton()` | hide the "add" button | false |
+| `->asList()` | display items as list on index and detail view | false |
+| `->asTotal()` | display total of items on index and detail view | false |
+| `->maxItems()` | display maximum of x items on index and detail view | 10 |
+| `->hideEllipsis()` | hide ellipsis symbol (...) on list display | false |
