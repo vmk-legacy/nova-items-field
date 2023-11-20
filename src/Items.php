@@ -46,8 +46,6 @@ class Items extends Field
             'createButtonValue' => $this->createButtonValue,
             'deleteButtonValue' => $this->deleteButtonValue,
             'detailItemComponent' => $this->detailItemComponent,
-            'maxItems' => 10,
-            'withEllipsis' => true,
         ]);
     }
 
@@ -57,7 +55,7 @@ class Items extends Field
 
         if (is_null($this->fillCallback)) {
             $this->fillUsing(function ($request, $model, $attribute, $requestAttribute) {
-                $model->$attribute = $this->isNullValue($request->$attribute) ? null : json_decode($request->$attribute, true);
+                $model->$attribute = $this->isValidNullValue($request->$attribute) ? null : json_decode($request->$attribute, true);
             });
         }
 
@@ -77,14 +75,21 @@ class Items extends Field
         ]);
     }
 
+    public function jsonSerialize(): array
+    {
+        return array_merge(parent::jsonSerialize(), [
+            'asHtml' => $this->asHtml,
+            'copyable' => $this->copyable,
+        ]);
+    }
+
     public function rules($rules)
     {
         if (!is_array($rules)) {
             abort(500, 'Nova Items Field requires array of validation rules');
         }
 
-        $this->rules = [ new ArrayRules($rules) ];
-
+        $this->rules = [new ArrayRules($rules)];
         return $this;
     }
 
@@ -100,112 +105,78 @@ class Items extends Field
     public function max($max)
     {
         $this->max = $max;
-
         return $this;
     }
 
     public function hideCreateButton($hideCreateButton = true)
     {
         $this->hideCreateButton = $hideCreateButton;
-
         return $this;
     }
 
     public function inputType($inputType)
     {
         $this->inputType = $inputType;
-
         return $this;
     }
 
     public function fullWidth($fullWidth = true)
     {
         $this->fullWidth = $fullWidth;
-
         return $this;
     }
 
     public function maxHeight($maxHeight)
     {
         $this->maxHeight = $maxHeight;
-
         return $this;
     }
 
     public function draggable($draggable = true)
     {
         $this->draggable = $draggable;
-
         return $this;
     }
 
-    public function placeholder($placeholder)
+    public function placeholder($text)
     {
-        $this->placeholder = $placeholder;
-
+        $this->placeholder = $text;
         return $this;
     }
 
     public function listFirst($listFirst = true)
     {
         $this->listFirst = $listFirst;
-
         return $this;
     }
 
     public function deleteButtonValue($deleteButtonValue)
     {
         $this->deleteButtonValue = $deleteButtonValue;
-
         return $this;
     }
 
     public function createButtonValue($createButtonValue)
     {
         $this->createButtonValue = $createButtonValue;
-
         return $this;
     }
 
     public function detailItemComponent($detailItemComponent)
     {
         $this->detailItemComponent = $detailItemComponent;
-
         return $this;
     }
 
-    /**
-     * Prepare the element for JSON serialization.
-     *
-     * @return array<string, mixed>
-     */
-    public function jsonSerialize(): array
+    public function indexAsList()
     {
-        $request = app(NovaRequest::class);
-
-        return array_merge(parent::jsonSerialize(), [
-            'asHtml' => $this->asHtml,
-            'copyable' => $this->copyable,
-        ]);
-    }
-
-    public function asList() {
-        $this->withMeta(['asList' => true]);
+        $this->withMeta(['indexAsList' => true]);
         return $this;
     }
 
-    public function asTotal() {
-       $this->withMeta(['asTotal' => true]);
-       return $this;
-    }
-
-    public function maxItems(int $value) {
-       $this->withMeta(['maxItems' => $value]);
-       return $this;
-    }
-
-    public function hideEllipsis() {
-       $this->withMeta(['withEllipsis' => false]);
-       return $this;
+    public function detailsAsTotal()
+    {
+        $this->withMeta(['detailsAsTotal' => true]);
+        return $this;
     }
 }

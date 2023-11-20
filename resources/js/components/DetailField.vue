@@ -1,13 +1,12 @@
 <template>
   <PanelItem :index="index" :field="field">
     <template #value>
-      <span v-if="shouldDisplayAsList">
+      <span v-if="!shouldDisplayDetailsAsTotal && !shouldDisplayAsHtml">
         <ul class="nova-items-field-list">
-          <li v-for="(value,index) in fieldValue" :key="index">{{value}}</li>
-          <li v-if="shouldDisplayEllipsis && fieldValueTruncated" class="nova-item-field-ellipis">...</li>
+          <li class="mb-1" style="list-style: square; margin-left: 1rem;" v-for="(value,index) in fieldValue" :key="index">{{value}}</li>
         </ul>
       </span>
-      <span v-else-if="shouldDisplayAsTotal" class="nova-items-field-total">
+      <span v-else-if="shouldDisplayDetailsAsTotal" class="nova-items-field-total">
         {{fieldValue.length}}
       </span>
       <span ref="theFieldValue" v-else-if="shouldDisplayAsHtml" class="nova-items-field">

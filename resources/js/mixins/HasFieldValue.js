@@ -1,25 +1,20 @@
 export default {
   computed: {
-    shouldDisplayEllipsis() {
-      return this.field.withEllipsis;
+    shouldDisplayIndexAsList() {
+      return this.field.indexAsList
     },
 
-    shouldDisplayAsList() {
-      return this.field.asList
+    shouldDisplayDetailsAsTotal() {
+      return this.field.detailsAsTotal
     },
 
-    shouldDisplayAsTotal() {
-      return this.field.asTotal
+    getIndexListMaxItems() {
+      return this.field.indexListMaxItems
     },
 
     fieldHasValue() {
         let fieldValue = this.field.value;
         return fieldValue && Array.isArray(fieldValue) && fieldValue.length;
-    },
-
-    fieldValueTruncated() {
-        let field = this.field;
-        return this.fieldHasValue && field.value.length > field.maxItems;
     },
 
     fieldValue() {
@@ -30,7 +25,7 @@ export default {
       if (this.field.displayedAs) {
         return String(this.field.displayedAs)
       } else {
-        return this.field.value.slice(0,this.field.maxItems);
+        return this.field.value;
       }
     }
   }

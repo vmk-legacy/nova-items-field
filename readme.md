@@ -28,9 +28,6 @@ public $casts = [
 ];
 ```
 
-In the latest release, default items will be displayed as "raw" on index and detail
-You can use asList, asTotal or displayUsing methods to format list
-
 ### Validation
 
 Use Laravel's built in [array validation](https://laravel.com/docs/5.7/validation#validating-arrays)
@@ -70,19 +67,17 @@ Here's a brief walkthrough to customize the vue item - [view](https://github.com
 
 ### Additional options
 
-| function | description | default |
-| - | - | - |
-| `->max(number)` | limit number of items allowed | false |
-| `->draggable()` | turn on drag/drop sorting | false |
-| `->fullWidth()` | increase the width of field area | false |
-| `->maxHeight(pixel)` | limit the height of the list | false |
-| `->listFirst()`| move add new to the bottom  | false |
-| `->inputType(text)` | text, date, etc | "text" |
-| `->placeholder($value)` | the new item input text | "Add a new item" |
-| `->deleteButtonValue($value)` | value for delete button | "x" |
-| `->createButtonValue($value)` | value for create button | "Add" |
-| `->hideCreateButton()` | hide the "add" button | false |
-| `->asList()` | display items as list on index and detail view | false |
-| `->asTotal()` | display total of items on index and detail view | false |
-| `->maxItems()` | display maximum of x items on index and detail view | 10 |
-| `->hideEllipsis()` | hide ellipsis symbol (...) on list display | false |
+| function                      | description                                            | default |
+|-------------------------------|--------------------------------------------------------| - |
+| `->max(number)`               | limit number of items allowed                          | false |
+| `->draggable()`               | turn on drag/drop sorting                              | false |
+| `->fullWidth()`               | increase the width of field area                       | false |
+| `->maxHeight(pixel)`          | limit the height of the list                           | false |
+| `->listFirst()`               | move add new to the bottom                             | false |
+| `->inputType(text)`           | text, date, etc                                        | "text" |
+| `->placeholder($value)`       | the new item input text                                | "Add a new item" |
+| `->deleteButtonValue($value)` | value for delete button                                | "x" |
+| `->createButtonValue($value)` | value for create button                                | "Add" |
+| `->hideCreateButton()`        | hide the "add" button                                  | false |
+| `->indexAsList()`             | display items as list on index instead of total number | false |
+| `->detailsAsTotal()`          | display total of items on detail view instead of list  | false |
