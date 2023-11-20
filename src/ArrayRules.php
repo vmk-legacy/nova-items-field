@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ArrayRules implements ValidationRule
 {
-    public array $rules = [];
+    public $rules = [];
 
     public function __construct(array $rules)
     {
@@ -58,7 +58,6 @@ class ArrayRules implements ValidationRule
         $validationAttribute = $this->getValidationAttribute($attribute);
         $input = [$validationAttribute => json_decode($value)];
         $rules =  $this->getRules($validationAttribute);
-        ray($rules);
         $validator = Validator::make($input, $rules, [], [(string)($validationAttribute) => 'list', $validationAttribute . '.*' => 'input']);
         $errors = [];
         foreach ($validator->errors()->toArray() as $attr => $error) {
