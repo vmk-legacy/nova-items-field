@@ -60,7 +60,7 @@
             :type="currentField.inputType"
             :placeholder="currentField.placeholder"
             class="flex-1 form-control form-input form-input-bordered"
-            @keypress.enter.prevent="addItem"
+            @keydown.enter.prevent="addItem"
         />
         <button
             type="button"
@@ -106,7 +106,7 @@ export default {
     setInitialValue()
     {
       this.value = JSON.stringify(this.fieldValue);
-      this.items = this.fieldValue;
+      this.items = this.fieldValue ?? [];
     },
 
     fill(formData)
