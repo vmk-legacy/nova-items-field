@@ -4,15 +4,10 @@ namespace NovaItemsField;
 
 use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\SupportsDependentFields;
-use Laravel\Nova\Fields\AsHTML;
-use Laravel\Nova\Fields\Copyable;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Items extends Field
 {
-    use AsHTML;
-    use Copyable;
-
     use SupportsDependentFields;
 
     public $items = [];
@@ -77,10 +72,7 @@ class Items extends Field
 
     public function jsonSerialize(): array
     {
-        return array_merge(parent::jsonSerialize(), [
-            'asHtml' => $this->asHtml,
-            'copyable' => $this->copyable,
-        ]);
+        return parent::jsonSerialize();
     }
 
     public function rules($rules)
