@@ -116,8 +116,16 @@ export default {
 
     addItem()
     {
-      const item = this.newItem.trim();
-      if (item && !this.maxReached) {
+      let item, go_ahead;
+      if (typeof(this.newItem) === 'number') {
+        item = this.newItem;
+        go_ahead = true;
+      } else {
+        item = this.newItem.trim();
+        go_ahead = item !== '';
+      }
+      if (go_ahead && !this.maxReached) {
+        console.log('cool')
         this.items.push(item)
         this.newItem = ''
 
