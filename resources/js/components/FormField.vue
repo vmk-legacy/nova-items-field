@@ -125,7 +125,6 @@ export default {
         go_ahead = item !== '';
       }
       if (go_ahead && !this.maxReached) {
-        console.log('cool')
         this.items.push(item)
         this.newItem = ''
 
