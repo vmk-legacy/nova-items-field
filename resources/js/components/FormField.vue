@@ -25,7 +25,7 @@
             <li class="py-1">
               <div class="nova-items-field-input-wrapper-item flex py-1 gap-2">
                 <button type="button" v-if="currentField.draggable === true" class="cursor-move sortable-handle px-4">
-                  <Icon type="menu"/>
+                  <Icon type="selector"/>
                 </button>
                 <input
                     :value="element"
@@ -44,7 +44,7 @@
                     v-html="currentField.deleteButtonValue"
                 />
                 <button v-else type="button" @click="removeItem(index)" class="px-1 ml-1 toolbar-button">
-                  <Icon type="x"/>
+                  <Icon type="trash"/>
                 </button>
               </div>
               <HelpText class="mt-2 help-text-error" v-if="hasErrors(index)">
